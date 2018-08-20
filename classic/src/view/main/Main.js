@@ -6,7 +6,7 @@
  * TODO - Replace this content of this view to suite the needs of your application.
  */
 Ext.define('ExtJsDashboard.view.main.Main', {
-	extend: 'Ext.Panel',
+	extend: 'Ext.panel.Panel',
 	xtype: 'app-main',
 
 	requires: [
@@ -15,7 +15,10 @@ Ext.define('ExtJsDashboard.view.main.Main', {
 
 		'ExtJsDashboard.view.main.MainController',
 		'ExtJsDashboard.view.main.MainModel',
-		'ExtJsDashboard.view.main.TasksList'
+		'ExtJsDashboard.view.toolbar.ToolBar',
+		'ExtJsDashboard.view.filter.Filter',
+		'ExtJsDashboard.view.tasksList.TasksList',
+		'ExtJsDashboard.view.form.Form'
 	],
 
 	layout: {
@@ -24,40 +27,64 @@ Ext.define('ExtJsDashboard.view.main.Main', {
 	},
 
 	controller: 'main',
-	viewModel: 'main',
+	viewModel: {
+		type: "main"
+	},
 
 	ui: 'navigation',
 
-	responsiveConfig: {
-		tall: {
-			headerPosition: 'top'
+	bodyPadding: '20px',
+
+	items: [
+		{
+			xtype: 'ExtJsDashboard-toolbar'
 		},
-		wide: {
-			headerPosition: 'left'
-		}
-	},
-
-	defaults: {
-		bodyPadding: 20,
-		tabConfig: {
-			plugins: 'responsive',
-			responsiveConfig: {
-				wide: {
-					iconAlign: 'left',
-					textAlign: 'left'
+		{
+			xtype: 'ExtJsDashboard-filter'
+		},
+		{
+			xtype: 'panel',
+			flex:1,
+			layout: {
+				type: 'hbox',
+				align: 'stretch'
+			},
+			style: {
+				marginTop: '10px'
+			},
+			items: [
+				{
+					flex: 2,
+					xtype: 'ExtJsDashboard-taskslist'
 				},
-				tall: {
-					iconAlign: 'top',
-					textAlign: 'center',
-					width: 120
+				{
+					xtype: 'tabpanel',
+					defaults: {
+						bodyPadding: 10
+					},
+					layout: {
+						type: 'vbox',
+						align: 'stretch'
+					},
+					style: {
+						border: '1px solid #e9e9e9'
+					},
+					flex: 1,
+					items: [
+						{
+							title: 'Details',
+							items: [
+								{
+									xtype: 'ExtJsDashboard-form'
+								}
+							]
+						}
+					]
 				}
-			}
-		}
-	},
-
-	items: [{
-		items: [{
-			xtype: 'taskslist'
-		}]
-	}]
+			]
+		},
+		{
+			xtype: 'ExtJsDashboard-bottombar'
+		},
+	]
 });

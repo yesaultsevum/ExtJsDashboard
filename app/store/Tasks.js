@@ -1,35 +1,32 @@
 Ext.define('ExtJsDashboard.store.Tasks', {
 	extend: 'Ext.data.Store',
-
 	alias: 'store.tasks',
-
 	model: 'ExtJsDashboard.model.Task',
+
+	autoLoad: true,
 
 	data: {
 		items: [
 			{
-				id: 1,
 				name: 'Task 1',
 				startDate: new Date(),
 				endDate: new Date(),
 				status: 'Stopped'
 			},
 			{
-				id: 2,
 				name: 'Task 2',
 				startDate: new Date(),
 				endDate: new Date(),
-				status: 'Runned'
+				status: 'Running'
 			},
 			{
-				id: 3,
 				name: 'Task 3',
 				startDate: new Date(),
 				endDate: new Date(),
 				status: 'Stopped'
 			}
-		]},
-
+		]
+	},
 	proxy: {
 		type: 'memory',
 		reader: {

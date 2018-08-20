@@ -3,3 +3,19 @@
  *  styling should be located the view's corresponding scss file.
  */
 $enable-font-awesome: dynamic(true);
+
+.run-icon {
+  color: purple
+}
+
+.stop-icon {
+  color: red
+}
+
+.add-icon {
+  color: green
+}
+
+.remove-icon {
+  color: red
+}
