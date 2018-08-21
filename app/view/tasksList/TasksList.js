@@ -8,7 +8,7 @@ Ext.define('ExtJsDashboard.view.tasksList.TasksList',{
 	},
     controller: 'ExtJsDashboard-taskslist',
 	bind: {
-		selection: '{selectedRecord}'
+		selection: '{gridSelection}'
 	},
 	reference: 'tasksListGrid',
 
@@ -21,23 +21,34 @@ Ext.define('ExtJsDashboard.view.tasksList.TasksList',{
 	},
 
 	columns: [
-		{ text: 'Id',  dataIndex: 'id' },
-		{ text: 'Name', dataIndex: 'name', flex: 1 },
 		{
+			text: 'Id',
+			dataIndex: 'id'
+		},
+		{
+			text: 'Name',
+			dataIndex: 'name',
+			flex: 1
+		},
+		{
+			xtype: 'datecolumn',
 			text: 'Start date',
 			dataIndex: 'startDate',
-			formatter: 'date("d-m-Y h:m:s")',
-			xtype: 'datecolumn',
+			format: 'd-m-Y H:m:s',
 			flex: 1
 		},
 		{
+			xtype: 'datecolumn',
 			text: 'End date',
 			dataIndex: 'endDate',
-			formatter: 'date("d-m-Y h:m:s")',
-			xtype: 'datecolumn',
+			format: 'd-m-Y H:m:s',
 			flex: 1
 		},
-		{ text: 'Status', dataIndex: 'status', flex: 1 }
+		{
+			text: 'Status',
+			dataIndex: 'status',
+			flex: 1
+		}
 	],
 
 	listeners: {

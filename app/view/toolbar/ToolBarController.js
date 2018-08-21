@@ -7,16 +7,16 @@ Ext.define('ExtJsDashboard.view.toolbar.ToolBarController', {
 		const selectedRecords = grid.getSelection();
 
 		selectedRecords.forEach((item) => {
-			item.data.status = status;
+			item.set('status', status)
 		});
-		grid.getView().refresh();
+		grid.store.fireEvent('tasksStatusWereChanged');
 	},
 
 	addRecord: function() {
     	const newTask = Ext.create('ExtJsDashboard.model.Task');
-    	const grid = Ext.ComponentQuery.query('ExtJsDashboard-taskslist')[0];
+    	const tasksStore = Ext.getStore('tasksStore');
 
-    	grid.store.add(newTask);
+		tasksStore.add(newTask);
     },
 
     removeRecords: function() {

@@ -9,9 +9,6 @@ Ext.define('ExtJsDashboard.view.bottomBar.BottomBar',{
     ],
 
     controller: 'ExtJsDashboard-bottombar',
-    //viewModel: {
-    //    type: 'bottombar-bottombar'
-    //},
 
 	bodyPadding: '10 0 0 0',
 
@@ -25,7 +22,7 @@ Ext.define('ExtJsDashboard.view.bottomBar.BottomBar',{
             xtype: 'button',
             text: 'Submit',
             bind: {
-                disabled: '{selectedRecord}'
+                disabled: '{gridSelection}'
             },
             margin: '0 10 0 0',
             handler: 'submitGridChanges'
@@ -34,7 +31,7 @@ Ext.define('ExtJsDashboard.view.bottomBar.BottomBar',{
             xtype: 'button',
             text: 'Cancel',
             bind: {
-                disabled: '{selectedRecord}'
+                disabled: '{gridSelection}'
             },
             handler: 'rejectGridChanges'
         }

@@ -1,6 +1,6 @@
 
 Ext.define('ExtJsDashboard.view.filter.Filter',{
-    extend: 'Ext.form.Panel',
+    extend: 'Ext.panel.Panel',
 	xtype: 'ExtJsDashboard-filter',
 
     requires: [
@@ -9,14 +9,7 @@ Ext.define('ExtJsDashboard.view.filter.Filter',{
 	    'ExtJsDashboard.store.Tasks'
     ],
 
-	store: {
-		type: 'tasks'
-	},
-
     controller: 'ExtJsDashboard-filter',
-    viewModel: {
-        type: 'ExtJsDashboard-filter'
-    },
 
 	style: {
 		border: '1px solid #e9e9e9'
@@ -27,16 +20,22 @@ Ext.define('ExtJsDashboard.view.filter.Filter',{
 	    	xtype: 'toolbar',
 		    items: [
 			    {
-				    width: 400,
-				    fieldLabel: 'Name',
-				    labelWidth: 50,
 				    xtype: 'textfield',
-				    emptyText:'Enter task name...',
+				    fieldLabel: 'Name',
 				    store: 'tasks',
+
+				    reference: 'tasksListFilter',
+
+				    bind: {
+					    value: '{filterValue}'
+				    },
+
+				    width: 400,
+				    labelWidth: 50,
+				    emptyText:'Enter task name...',
+
 				    listeners: {
-					    change: {
-						    //fn: onTextFieldChange
-					    }
+					    change:  'onFilterChange'
 				    }
 			    }
 		    ]

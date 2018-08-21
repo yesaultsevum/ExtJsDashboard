@@ -17,11 +17,11 @@ Ext.define('ExtJsDashboard.view.bottomBar.BottomBarController', {
     },
 
     commitOrRejectStoreChanges: function(operation) {
-	    const grid = Ext.ComponentQuery.query('ExtJsDashboard-taskslist')[0];
-	    const hasModified = grid.store.getModifiedRecords().length !== 0;
+	    const tasksStore = Ext.getStore('tasksStore');
+	    const hasModified = tasksStore.getModifiedRecords().length !== 0 || tasksStore.getRemovedRecords() !== 0;
 
 	    if (hasModified) {
-		    grid.store[operation]();
+		    tasksStore[operation]();
 		    this.showToast('The action was successfully committed')
 	    } else {
 		    this.showToast('There is no changed data in the grid')

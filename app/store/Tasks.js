@@ -3,12 +3,12 @@ Ext.define('ExtJsDashboard.store.Tasks', {
 	alias: 'store.tasks',
 	model: 'ExtJsDashboard.model.Task',
 
-	autoLoad: true,
+	storeId: 'tasksStore',
 
 	data: {
-		items: [
+		tasks: [
 			{
-				name: 'Task 1',
+				name: 'Task',
 				startDate: new Date(),
 				endDate: new Date(),
 				status: 'Stopped'
@@ -27,11 +27,24 @@ Ext.define('ExtJsDashboard.store.Tasks', {
 			}
 		]
 	},
+
+	//filters: {
+	//	property: 'name',
+	//	value: '{filterValue}'
+	//},
+
+	//filters: [
+	//	function(item) {
+	//		debugger
+	//		return item.id === '{filter}';
+	//	}
+	//],
+
 	proxy: {
 		type: 'memory',
 		reader: {
 			type: 'json',
-			rootProperty: 'items'
+			rootProperty: 'tasks'
 		}
 	}
 });

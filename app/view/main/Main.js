@@ -15,9 +15,8 @@ Ext.define('ExtJsDashboard.view.main.Main', {
 
 		'ExtJsDashboard.view.main.MainController',
 		'ExtJsDashboard.view.main.MainModel',
+
 		'ExtJsDashboard.view.toolbar.ToolBar',
-		'ExtJsDashboard.view.filter.Filter',
-		'ExtJsDashboard.view.tasksList.TasksList',
 		'ExtJsDashboard.view.form.Form'
 	],
 
@@ -29,6 +28,9 @@ Ext.define('ExtJsDashboard.view.main.Main', {
 	controller: 'main',
 	viewModel: {
 		type: "main"
+	},
+	store: {
+		type: 'tasks'
 	},
 
 	ui: 'navigation',
@@ -54,8 +56,8 @@ Ext.define('ExtJsDashboard.view.main.Main', {
 			},
 			items: [
 				{
-					flex: 2,
-					xtype: 'ExtJsDashboard-taskslist'
+					xtype: 'ExtJsDashboard-taskslist',
+					flex: 2
 				},
 				{
 					xtype: 'tabpanel',

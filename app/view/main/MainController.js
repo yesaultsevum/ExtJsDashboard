@@ -1,19 +1,22 @@
-/**
- * This class is the controller for the main view for the application. It is specified as
- * the "controller" of the Main view class.
- */
+
 Ext.define('ExtJsDashboard.view.main.MainController', {
     extend: 'Ext.app.ViewController',
-
     alias: 'controller.main',
 
-    onItemSelected: function (sender, record) {
-        // Ext.Msg.confirm('Confirm', 'Are you sure?', 'onConfirm', this);
-    },
+	init: function () {
+		Ext.getStore('tasksStore').on('tasksStatusWereChanged', 'changeRunStopButtonsStatus', this);
+	},
 
-    onConfirm: function (choice) {
-        if (choice === 'yes') {
-            //
-        }
+    changeRunStopButtonsStatus: function() {
+	    const grid = Ext.ComponentQuery.query('ExtJsDashboard-taskslist')[0];
+	    const selectedRecords = grid.getSelection();
+	    const viewModel = this.getViewModel();
+	    const hasStopped = selectedRecords.some(item => item.data.status === 'Stopped');
+	    const hasRunning = selectedRecords.some(item => item.data.status === 'Running');
+
+	    viewModel.set({
+		    isRunDisabled: !hasStopped,
+		    isStopDisabled: !hasRunning
+	    });
     }
 });

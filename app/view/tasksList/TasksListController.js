@@ -1,19 +1,17 @@
 Ext.define('ExtJsDashboard.view.tasksList.TasksListController', {
-    extend: 'Ext.app.ViewController',
+    //extend: 'Ext.app.ViewController',
+    extend: 'ExtJsDashboard.view.main.MainController',
     alias: 'controller.ExtJsDashboard-taskslist',
 
 	onSelectionChange: function (sender, selected) {
 		const selectedRecordsCount = selected.length;
-		const areStopped = selected.some(item => item.data.status === 'Stopped');
-		const areRunning = selected.some(item => item.data.status === 'Running');
 		const viewModel = this.getViewModel();
 
-		viewModel.set({
-			isFormDisabled: selectedRecordsCount !== 1,
-			isRunDisabled: !areStopped,
-			isStopDisabled: !areRunning
-		});
+		this.changeRunStopButtonsStatus();
 
+		viewModel.set({
+			selectedRecord: selectedRecordsCount === 1 ? selected[0] : null
+		});
 	}
 
 });

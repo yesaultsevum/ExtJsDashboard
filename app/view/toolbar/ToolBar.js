@@ -28,7 +28,7 @@ Ext.define('ExtJsDashboard.view.toolbar.ToolBar',{
 				    text: 'Remove',
 				    glyph: 'f057@FontAwesome',
 				    bind: {
-					    disabled: '{!selectedRecord}'
+					    disabled: '{!gridSelection}'
 				    },
 				    handler: 'removeRecords'
 			    },

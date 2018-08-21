@@ -6,8 +6,8 @@ Ext.define('ExtJsDashboard.view.main.MainModel', {
     alias: 'viewmodel.main',
 
     data: {
+    	gridSelection: null,
     	selectedRecord: null,
-	    isFormDisabled: true,
 	    isRunDisabled: true,
 	    isStopDisabled: true
     }

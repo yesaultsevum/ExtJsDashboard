@@ -14,18 +14,21 @@ Ext.define('ExtJsDashboard.view.form.Form',{
 	    {
 	        xtype: 'form',
 		    bind: {
-			    disabled: '{isFormDisabled}'
+			    disabled: '{!selectedRecord}'
 		    },
 		    items: [
 			    {
 				    xtype: 'fieldset',
 				    title: 'General options',
 
+				    modelValidation: true,
+
 				    layout: 'anchor',
 				    defaults: {
 					    anchor: '100%'
 				    },
 				    defaultType: 'textfield',
+
 				    items: [
 					    {
 						    fieldLabel: 'Id',
@@ -39,24 +42,21 @@ Ext.define('ExtJsDashboard.view.form.Form',{
 						    bind: '{selectedRecord.name}'
 					    },
 					    {
+						    xtype: 'datefield',
 						    fieldLabel: 'StartDate',
 						    name: 'startDate',
-						    xtype: 'datefield',
-						    formatter: 'date("d-m-Y h:m:s")',
-						    bind: '{selectedRecord.startDate}',
-						    itemId: 'startdt',
-						    vtype: 'daterange',
-						    endDateField: 'enddt'
+						    format: 'd/m/Y H:m:s',
+						    bind: '{selectedRecord.startDate}'
 					    },
 					    {
+						    xtype: 'datefield',
 						    fieldLabel: 'EndDate',
 						    name: 'endDate',
-						    xtype: 'datefield',
-						    formatter: 'date("d-m-Y h:m:s")',
-						    bind: '{selectedRecord.endDate}',
-						    itemId: 'enddt',
-						    vtype: 'daterange',
-						    startDateField: 'startdt'
+						    format: 'd/m/Y H:m:s',
+						    bind: {
+						    	value: '{selectedRecord.endDate}',
+							    minValue: '{selectedRecord.startDate}'
+						    }
 					    }
 				    ]
 			    }
