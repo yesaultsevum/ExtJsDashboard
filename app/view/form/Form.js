@@ -16,12 +16,11 @@ Ext.define('ExtJsDashboard.view.form.Form',{
 		    bind: {
 			    disabled: '{!selectedRecord}'
 		    },
+		    modelValidation: true,
 		    items: [
 			    {
 				    xtype: 'fieldset',
 				    title: 'General options',
-
-				    modelValidation: true,
 
 				    layout: 'anchor',
 				    defaults: {

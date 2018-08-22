@@ -1,5 +1,5 @@
 Ext.define('ExtJsDashboard.view.filter.FilterController', {
-    extend: 'Ext.app.ViewController',
+	extend: 'ExtJsDashboard.view.main.MainController',
     alias: 'controller.ExtJsDashboard-filter',
 
 	onFilterChange: function(field) {

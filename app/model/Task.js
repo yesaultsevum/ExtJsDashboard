@@ -9,8 +9,8 @@ Ext.define('ExtJsDashboard.model.Task', {
     fields: [
         { name: 'id', type: 'int' },
         { name: 'name', type: 'string' },
-        { name: 'startDate', type: 'date', dateFormat: 'd-m-Y H:i:s' },
-        { name: 'endDate', type: 'date', dateFormat: 'd-m-Y H:i:s' },
+        { name: 'startDate', type: 'date' },
+        { name: 'endDate', type: 'date' },
         { name: 'status', type: 'string', defaultValue: 'Stopped' }
     ],
 

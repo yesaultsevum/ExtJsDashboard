@@ -8,7 +8,7 @@ Ext.define('ExtJsDashboard.store.Tasks', {
 	data: {
 		tasks: [
 			{
-				name: 'Task',
+				name: 'Task 1',
 				startDate: new Date(),
 				endDate: new Date(),
 				status: 'Stopped'
@@ -28,22 +28,9 @@ Ext.define('ExtJsDashboard.store.Tasks', {
 		]
 	},
 
-	//filters: {
-	//	property: 'name',
-	//	value: '{filterValue}'
-	//},
-
-	//filters: [
-	//	function(item) {
-	//		debugger
-	//		return item.id === '{filter}';
-	//	}
-	//],
-
 	proxy: {
 		type: 'memory',
 		reader: {
-			type: 'json',
 			rootProperty: 'tasks'
 		}
 	}

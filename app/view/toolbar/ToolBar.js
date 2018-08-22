@@ -3,17 +3,12 @@ Ext.define('ExtJsDashboard.view.toolbar.ToolBar',{
     extend: 'Ext.panel.Panel',
 	xtype: 'ExtJsDashboard-toolbar',
 
-    requires: [
-        'ExtJsDashboard.view.toolbar.ToolBarController',
-        'ExtJsDashboard.view.toolbar.ToolBarModel'
-    ],
-
     controller: 'ExtJsDashboard-toolbar',
 
     items: [
 	    {
 		    xtype: 'toolbar',
-		    padding: '0 0 10px 0',
+		    padding: 0,
 		    items: [
 			    {
 				    xtype: 'button',

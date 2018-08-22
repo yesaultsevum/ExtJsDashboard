@@ -1,5 +1,5 @@
 Ext.define('ExtJsDashboard.view.toolbar.ToolBarController', {
-    extend: 'Ext.app.ViewController',
+	extend: 'ExtJsDashboard.view.main.MainController',
     alias: 'controller.ExtJsDashboard-toolbar',
 
 	setTasksStatus: function(status) {
@@ -9,12 +9,12 @@ Ext.define('ExtJsDashboard.view.toolbar.ToolBarController', {
 		selectedRecords.forEach((item) => {
 			item.set('status', status)
 		});
-		grid.store.fireEvent('tasksStatusWereChanged');
+		this.changeRunStopButtonsStatus(selectedRecords);
 	},
 
 	addRecord: function() {
-    	const newTask = Ext.create('ExtJsDashboard.model.Task');
-    	const tasksStore = Ext.getStore('tasksStore');
+		const newTask = Ext.create('ExtJsDashboard.model.Task');
+		const tasksStore = Ext.getStore('tasksStore');
 
 		tasksStore.add(newTask);
     },

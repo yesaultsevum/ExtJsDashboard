@@ -1,28 +1,34 @@
 Ext.define('ExtJsDashboard.view.bottomBar.BottomBarController', {
-    extend: 'Ext.app.ViewController',
+	extend: 'ExtJsDashboard.view.main.MainController',
     alias: 'controller.ExtJsDashboard-bottombar',
 
-	showToast: function(message) {
-		Ext.toast({
-			html: message,
-			closable: false,
-			align: 't',
-			slideDUration: 400,
-			maxWidth: 400
-		});
-	},
-
-    showConfirm: function(confirmMessage, operation) {
-	    Ext.MessageBox.confirm('Confirm', confirmMessage, this.commitOrRejectStoreChanges.bind(this, operation), this);
+    showConfirm: function(confirmMessage, method) {
+	    Ext.MessageBox.confirm('Confirm', confirmMessage, this.commitOrRejectStoreChanges.bind(this, method), this);
     },
 
-    commitOrRejectStoreChanges: function(operation) {
+    commitOrRejectStoreChanges: function(method, choice) {
+    	if (choice === 'no') return;
+
 	    const tasksStore = Ext.getStore('tasksStore');
-	    const hasModified = tasksStore.getModifiedRecords().length !== 0 || tasksStore.getRemovedRecords() !== 0;
+
+	    /***
+	     * By default new added records is no valid
+	     * Manual check for added records, because method getModifiedRecords work only with valid records.
+	     */
+	    const invalidNewRecords = tasksStore.data.filterBy((item) => {
+		    return item.phantom === true && !item.isValid()
+	    });
+
+	    const hasModified = tasksStore.getModifiedRecords().length > 0 || tasksStore.getRemovedRecords().length > 0 || invalidNewRecords.length > 0;
 
 	    if (hasModified) {
-		    tasksStore[operation]();
-		    this.showToast('The action was successfully committed')
+		    tasksStore[method]();
+
+		    if (invalidNewRecords.length > 0 && method === 'commitChanges') {
+			    this.showToast('Attention, there are invalid records! Changes will be applied only to valid records');
+		    } else {
+			    this.showToast('The action was successfully committed')
+		    }
 	    } else {
 		    this.showToast('There is no changed data in the grid')
 	    }
