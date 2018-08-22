@@ -4,24 +4,24 @@
  * initialization details.
  */
 Ext.define('ExtJsDashboard.Application', {
-    extend: 'Ext.app.Application',
+	extend: 'Ext.app.Application',
 
-    name: 'ExtJsDashboard',
+	name: 'ExtJsDashboard',
 
-    quickTips: false,
-    platformConfig: {
-        desktop: {
-            quickTips: true
-        }
-    },
+	quickTips: false,
+	platformConfig: {
+		desktop: {
+			quickTips: true
+		}
+	},
 
-    onAppUpdate: function () {
-        Ext.Msg.confirm('Application Update', 'This application has an update, reload?',
-            function (choice) {
-                if (choice === 'yes') {
-                    window.location.reload();
-                }
-            }
-        );
-    }
+	onAppUpdate: function() {
+		Ext.Msg.confirm('Application Update', 'This application has an update, reload?',
+			function(choice) {
+				if (choice === 'yes') {
+					window.location.reload();
+				}
+			}
+		);
+	}
 });

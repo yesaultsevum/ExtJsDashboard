@@ -1,4 +1,3 @@
-
 Ext.define('ExtJsDashboard.view.main.Main', {
 	extend: 'Ext.panel.Panel',
 	xtype: 'app-main',
@@ -31,7 +30,7 @@ Ext.define('ExtJsDashboard.view.main.Main', {
 		},
 		{
 			xtype: 'panel',
-			flex:1,
+			flex: 1,
 			layout: {
 				type: 'hbox',
 				align: 'stretch'

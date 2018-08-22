@@ -1,6 +1,6 @@
 Ext.define('ExtJsDashboard.view.filter.FilterController', {
 	extend: 'ExtJsDashboard.view.main.MainController',
-    alias: 'controller.ExtJsDashboard-filter',
+	alias: 'controller.ExtJsDashboard-filter',
 
 	onFilterChange: function(field) {
 		const filterValue = field.getValue();

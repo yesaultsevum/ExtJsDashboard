@@ -1,12 +1,11 @@
-
-Ext.define('ExtJsDashboard.view.tasksList.TasksList',{
+Ext.define('ExtJsDashboard.view.tasksList.TasksList', {
 	extend: 'Ext.grid.Panel',
 	xtype: 'ExtJsDashboard-taskslist',
 
 	store: {
 		type: 'tasks'
 	},
-    controller: 'ExtJsDashboard-taskslist',
+	controller: 'ExtJsDashboard-taskslist',
 	bind: {
 		selection: '{gridSelection}'
 	},

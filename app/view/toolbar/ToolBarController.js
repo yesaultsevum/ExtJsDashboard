@@ -1,6 +1,6 @@
 Ext.define('ExtJsDashboard.view.toolbar.ToolBarController', {
 	extend: 'ExtJsDashboard.view.main.MainController',
-    alias: 'controller.ExtJsDashboard-toolbar',
+	alias: 'controller.ExtJsDashboard-toolbar',
 
 	setTasksStatus: function(status) {
 		const grid = Ext.ComponentQuery.query('ExtJsDashboard-taskslist')[0];
@@ -17,14 +17,14 @@ Ext.define('ExtJsDashboard.view.toolbar.ToolBarController', {
 		const tasksStore = Ext.getStore('tasksStore');
 
 		tasksStore.add(newTask);
-    },
+	},
 
-    removeRecords: function() {
-	    const grid = Ext.ComponentQuery.query('ExtJsDashboard-taskslist')[0];
-	    const selectedRecords = grid.getSelection();
+	removeRecords: function() {
+		const grid = Ext.ComponentQuery.query('ExtJsDashboard-taskslist')[0];
+		const selectedRecords = grid.getSelection();
 
-	    grid.store.remove(selectedRecords);
-    },
+		grid.store.remove(selectedRecords);
+	},
 
 	runTasks: function() {
 		this.setTasksStatus('Running');

@@ -1,8 +1,8 @@
 Ext.define('ExtJsDashboard.view.tasksList.TasksListController', {
-    extend: 'ExtJsDashboard.view.main.MainController',
-    alias: 'controller.ExtJsDashboard-taskslist',
+	extend: 'ExtJsDashboard.view.main.MainController',
+	alias: 'controller.ExtJsDashboard-taskslist',
 
-	onSelectionChange: function (sender, selected) {
+	onSelectionChange: function(sender, selected) {
 		const selectedRecordsCount = selected.length;
 		const viewModel = this.getViewModel();
 		const form = Ext.ComponentQuery.query('ExtJsDashboard-form')[0];
